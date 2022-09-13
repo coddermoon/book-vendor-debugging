@@ -91,23 +91,23 @@ const createCard = (book) => {
   const div = document.createElement("div");
   div.classList.add("card");
 
-  let overview = book.overview;
+  let overview = book.overview.slice(0,60);
 
   div.innerHTML = `
   <div class="image-container">
     <img
-      src="${book.Image}"
+      src="${book.image}"
       alt=""
     />
     <div class="button-container">
       <button onclick="addToWishlist('${book.id}')" class="button"><i class="fa-solid fa-heart"></i></button>
-      <button onclick="AddToCart" class="button">Add To Cart</button>
+      <button onclick="AddToCart('${book.id}')" class="button">Add To Cart</button>
     </div>
   </div>
   <div class="info-container">
     <h1>${book.name}</h1>
     <p>
-      ${overview}
+      ${overview+'...'}
     </p>
   </div>
 
