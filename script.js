@@ -50,6 +50,8 @@ const bookList = [
 const wishlistItems = [];
 const cart = [];
 
+
+
 const getWishlistItems = () => {
   return bookList.filter((book) => wishlistItems.includes(book.id.toString()));
 };
@@ -60,10 +62,12 @@ const getCartItems = () => {
 
 const switchTab = (id) => {
   if (id === "container") {
+   
     document.getElementById("container").style.display = "grid";
     document.getElementById("wishlist").style.display = "none";
     document.getElementById("cart").style.display = "none";
   } else if (id === "wishlist") {
+
     document.getElementById("wishlist").style.display = "grid";
     document.getElementById("container").style.display = "none";
     document.getElementById("cart").style.display = "none";
@@ -73,14 +77,14 @@ const switchTab = (id) => {
     document.getElementById("cart").style.display = "grid";
     document.getElementById("container").style.display = "none";
     document.getElementById("wishlist").style.display = "none";
-
+    document.getElementById("cart").innerHTML=""
     displayCart();
   }
 };
 
 const showBooks = (books) => {
   const bookContainer = document.getElementById("container");
-
+  
   books.forEach((book) => {
     const div = createCard(book);
     bookContainer.appendChild(div);
@@ -101,7 +105,7 @@ const createCard = (book) => {
     />
     <div class="button-container">
       <button onclick="addToWishlist('${book.id}')" class="button"><i class="fa-solid fa-heart"></i></button>
-      <button onclick="AddToCart('${book.id}')" class="button">Add To Cart</button>
+      <button onclick="addToCart('${book.id}')" class="button">Add To Cart</button>
     </div>
   </div>
   <div class="info-container">
@@ -129,10 +133,13 @@ const addToWishlist = (id) => {
 };
 
 const displayCart = () => {
+
   const cart = getCartItems();
-  console.log(cart);
+  
+ 
 
   cart.forEach((book) => {
+
     const div = createCard(book);
     document.getElementById("cart").appendChild(div);
   });
